@@ -1,0 +1,33 @@
+<section id="projects" class="projects">
+      <div class="container">
+        <div class="section-eyebrow">Projects</div>
+        <h2 class="section-heading">Things I've built</h2>
+        <p class="section-sub">Real-world applications built end-to-end across the full stack.</p>
+
+        <div class="proj__list">
+          <div class="proj-card" *ngFor="let p of projects; let i = index" [class.proj-card--featured]="p.featured">
+            <div class="proj-card__left">
+              <div class="proj-card__num">{{ ('0'+(i+1)).slice(-2) }}</div>
+              <div>
+                <div class="proj-card__badges">
+                  <span class="proj-badge proj-badge--featured" *ngIf="p.featured">Featured</span>
+                  <span class="proj-badge">{{ p.type }}</span>
+                </div>
+                <h3 class="proj-card__title">{{ p.title }}</h3>
+                <p class="proj-card__desc">{{ p.description }}</p>
+                <ul class="proj-card__points">
+                  <li *ngFor="let pt of p.points">{{ pt }}</li>
+                </ul>
+              </div>
+            </div>
+            <div class="proj-card__right">
+              <div class="proj-card__stack-label">Tech stack</div>
+              <div class="proj-card__stack">
+                <span class="pill" *ngFor="let t of p.stack">{{ t }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>

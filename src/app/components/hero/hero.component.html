@@ -1,0 +1,93 @@
+<section id="hero" class="hero">
+  <div class="hero__grid"></div>
+  <div class="container hero__inner">
+    <div class="hero__badge">
+      <span class="hero__badge-dot"></span>
+      Available for new opportunities
+    </div>
+
+    <h1 class="hero__name">Preeti<br /><em>Banshkar</em></h1>
+
+    <p class="hero__title">
+      Angular Developer & Full Stack Engineer
+      <span class="hero__cursor" [class.blink]="cursorBlink">|</span>
+    </p>
+
+    <p class="hero__bio">
+      Nearly 2 years building responsive, scalable web applications with Angular and .NET Core. I
+      bridge the full UI → API → Database stack — from pixel-perfect components to optimised SQL
+      queries.
+    </p>
+
+    <div class="hero__meta">
+      <span class="hero__meta-item">
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z" />
+          <circle cx="12" cy="10" r="3" />
+        </svg>
+        Indore, MP · India
+      </span>
+      <span class="hero__meta-sep">·</span>
+      <span class="hero__meta-item">
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <rect x="2" y="7" width="20" height="14" rx="2" />
+          <path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16" />
+        </svg>
+        Episeron Pvt Ltd
+      </span>
+      <span class="hero__meta-sep">·</span>
+      <span class="hero__meta-item">
+        <svg
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+          <path d="M6 12v5c3 3 9 3 12 0v-5" />
+        </svg>
+        MCA · Dr. HSG Central University
+      </span>
+    </div>
+
+    <div class="hero__actions">
+      <a href="#projects" class="btn btn--primary">View my work</a>
+      <a href="#contact" class="btn btn--outline">Get in touch</a>
+      <a
+        href="https://linkedin.com/in/preeti-banshkar-308432256"
+        target="_blank"
+        class="btn btn--ghost"
+      >
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.37V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zm1.78 13.02H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"
+          />
+        </svg>
+        LinkedIn
+      </a>
+    </div>
+
+    <div class="hero__stats">
+      <div class="hero__stat" *ngFor="let s of stats">
+        <span class="hero__stat-num">{{ s.num }}</span>
+        <span class="hero__stat-label">{{ s.label }}</span>
+      </div>
+    </div>
+  </div>
+</section>

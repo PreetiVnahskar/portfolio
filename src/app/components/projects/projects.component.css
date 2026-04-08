@@ -1,0 +1,132 @@
+.projects {
+  background: #0a0a0f;
+}
+.proj__list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.proj-card {
+  background: #0d1117;
+  border: 1px solid #1e293b;
+  border-radius: 16px;
+  padding: 28px 32px;
+  display: grid;
+  grid-template-columns: 1fr 220px;
+  gap: 32px;
+  align-items: start;
+  transition:
+    border-color 0.2s,
+    transform 0.2s;
+}
+.proj-card:hover {
+  border-color: #7c3aed40;
+  transform: translateY(-2px);
+}
+.proj-card--featured {
+  border-color: #7c3aed30;
+  background: linear-gradient(135deg, #0d1117, #7c3aed08);
+}
+.proj-card--featured:hover {
+  border-color: #7c3aed;
+}
+
+.proj-card__left {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.proj-card__num {
+  font-family: 'Fraunces', serif;
+  font-size: 32px;
+  font-weight: 300;
+  color: #1e293b;
+  line-height: 1;
+  padding-top: 4px;
+  min-width: 40px;
+}
+.proj-card--featured .proj-card__num {
+  color: #7c3aed30;
+}
+
+.proj-card__badges {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.proj-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 9px;
+  border-radius: 5px;
+  background: #1e293b;
+  color: #64748b;
+  border: 1px solid #334155;
+  letter-spacing: 0.02em;
+}
+.proj-badge--featured {
+  background: #7c3aed20;
+  color: #a78bfa;
+  border-color: #7c3aed40;
+}
+
+.proj-card__title {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #f1f5f9;
+  margin-bottom: 10px;
+  letter-spacing: -0.01em;
+}
+.proj-card__desc {
+  font-size: 14px;
+  color: #64748b;
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+.proj-card__points {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.proj-card__points li {
+  font-size: 13px;
+  color: #475569;
+  padding-left: 14px;
+  position: relative;
+  line-height: 1.6;
+}
+.proj-card__points li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: #7c3aed;
+  font-size: 11px;
+  top: 2px;
+}
+
+.proj-card__right {
+  padding-top: 4px;
+}
+.proj-card__stack-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #334155;
+  margin-bottom: 10px;
+}
+.proj-card__stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+@media (max-width: 768px) {
+  .proj-card {
+    grid-template-columns: 1fr;
+  }
+}

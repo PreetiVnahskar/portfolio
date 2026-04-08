@@ -1,0 +1,59 @@
+<section id="contact" class="contact">
+      <div class="container">
+        <div class="section-eyebrow">Contact</div>
+        <h2 class="section-heading">Let's work together</h2>
+        <p class="section-sub">Open to full-time Angular / Full Stack / Salesforce roles. Based in Indore, open to remote.</p>
+
+        <div class="contact__grid">
+
+          <div class="contact__left">
+            <a *ngFor="let link of links" [href]="link.href" [target]="link.external ? '_blank' : '_self'" class="contact-link">
+              <div class="contact-link__icon" [innerHTML]="link.icon"></div>
+              <div class="contact-link__body">
+                <span class="contact-link__label">{{ link.label }}</span>
+                <span class="contact-link__value">{{ link.value }}</span>
+              </div>
+              <svg class="contact-link__arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+
+            <div class="contact__status">
+              <div class="contact__status-dot"></div>
+              <div>
+                <div class="contact__status-title">Open to work</div>
+                <div class="contact__status-sub">Angular Dev · Full Stack · Salesforce · Indore / Remote</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact__form">
+            <ng-container *ngIf="!sent">
+              <div class="form-group">
+                <label class="form-label">Name</label>
+                <input class="form-input" type="text" [(ngModel)]="form.name" placeholder="Your name">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Email</label>
+                <input class="form-input" type="email" [(ngModel)]="form.email" placeholder="your@email.com">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Message</label>
+                <textarea class="form-input form-textarea" [(ngModel)]="form.message" placeholder="Hi Preeti, I came across your portfolio..."></textarea>
+              </div>
+              <button class="form-submit" (click)="send()" [disabled]="!form.name || !form.email || !form.message">Send message</button>
+            </ng-container>
+            <div class="form-success" *ngIf="sent">
+              <div class="form-success__icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <p class="form-success__text">Message received! I'll get back to you shortly.</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="contact__footer">
+          <span>Designed & built by Preeti Banshkar · Indore, India · {{ year }}</span>
+          <span>Angular · TypeScript · .NET Core</span>
+        </div>
+      </div>
+    </section>

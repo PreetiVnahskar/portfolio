@@ -1,0 +1,173 @@
+.experience {
+  background: #0d1117;
+}
+.exp__layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 32px;
+  margin-bottom: 72px;
+}
+
+.exp__timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.exp__job {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.15s;
+  border: 1px solid transparent;
+}
+.exp__job:hover {
+  background: #0a0a0f;
+}
+.exp__job--selected {
+  background: #0a0a0f;
+  border-color: #1e293b;
+}
+.exp__job-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #334155;
+  margin-top: 6px;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+.exp__job--active .exp__job-dot {
+  background: #10b981;
+  box-shadow: 0 0 0 3px #10b98120;
+}
+.exp__job--selected .exp__job-dot {
+  background: #7c3aed;
+}
+.exp__job-company {
+  font-size: 13px;
+  font-weight: 600;
+  color: #f1f5f9;
+}
+.exp__job-role {
+  font-size: 12px;
+  color: #64748b;
+  margin: 2px 0;
+}
+.exp__job-period {
+  font-size: 11px;
+  color: #334155;
+}
+
+.exp__panel {
+  animation: fadeIn 0.2s ease;
+}
+.exp__panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.exp__current-badge {
+  font-size: 11px;
+  font-weight: 600;
+  color: #10b981;
+  background: #10b98112;
+  border: 1px solid #10b98130;
+  padding: 2px 9px;
+  border-radius: 5px;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+.exp__panel-title {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #f1f5f9;
+  margin-bottom: 4px;
+}
+.exp__panel-company {
+  font-size: 14px;
+  color: #64748b;
+}
+.exp__panel-period {
+  font-size: 13px;
+  color: #475569;
+  white-space: nowrap;
+}
+
+.exp__points {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.exp__points li {
+  font-size: 14px;
+  color: #94a3b8;
+  padding-left: 18px;
+  position: relative;
+  line-height: 1.7;
+}
+.exp__points li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 9px;
+  width: 6px;
+  height: 1px;
+  background: #7c3aed;
+}
+
+.exp__tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.exp__edu {
+  border-top: 1px solid #1e293b;
+  padding-top: 48px;
+}
+.edu__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+.edu-card {
+  background: #0a0a0f;
+  border: 1px solid #1e293b;
+  border-radius: 12px;
+  padding: 20px 24px;
+  transition: border-color 0.2s;
+}
+.edu-card:hover {
+  border-color: #334155;
+}
+.edu-card__degree {
+  font-size: 14px;
+  font-weight: 600;
+  color: #f1f5f9;
+  margin-bottom: 6px;
+}
+.edu-card__school {
+  font-size: 13px;
+  color: #64748b;
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+.edu-card__year {
+  font-size: 12px;
+  color: #334155;
+}
+
+@media (max-width: 768px) {
+  .exp__layout {
+    grid-template-columns: 1fr;
+  }
+}

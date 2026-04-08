@@ -1,0 +1,37 @@
+<section id="skills" class="skills">
+      <div class="container">
+        <div class="section-eyebrow">Skills</div>
+        <h2 class="section-heading">What I work with</h2>
+        <p class="section-sub">Technologies I use daily to build production-grade full-stack applications.</p>
+
+        <div class="skills__grid">
+          <div class="skill-card" *ngFor="let cat of categories">
+            <div class="skill-card__head">
+              <div class="skill-card__icon" [innerHTML]="cat.icon"></div>
+              <div>
+                <h3 class="skill-card__title">{{ cat.title }}</h3>
+                <p class="skill-card__sub">{{ cat.sub }}</p>
+              </div>
+            </div>
+            <div class="skill-card__pills">
+              <span class="skill-pill" *ngFor="let s of cat.skills" [class]="'skill-pill--' + s.level">
+                {{ s.name }}
+                <span class="skill-pill__dot"></span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="skills__legend">
+          <span class="legend-label">Proficiency:</span>
+          <span class="legend-item legend-item--high">Daily use</span>
+          <span class="legend-item legend-item--mid">Proficient</span>
+          <span class="legend-item legend-item--low">Familiar</span>
+        </div>
+
+        <div class="skills__also">
+          <span class="skills__also-label">Also know:</span>
+          <span class="pill" *ngFor="let t of also">{{ t }}</span>
+        </div>
+      </div>
+    </section>

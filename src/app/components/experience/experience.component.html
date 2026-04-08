@@ -1,0 +1,55 @@
+<section id="experience" class="experience">
+      <div class="container">
+        <div class="section-eyebrow">Experience</div>
+        <h2 class="section-heading">Where I've worked</h2>
+        <p class="section-sub">My professional journey building production software.</p>
+
+        <div class="exp__layout">
+
+          <div class="exp__timeline">
+            <div class="exp__job" *ngFor="let job of jobs; let i = index" [class.exp__job--active]="job.current" (click)="active = i" [class.exp__job--selected]="active === i">
+              <div class="exp__job-dot"></div>
+              <div>
+                <div class="exp__job-company">{{ job.company }}</div>
+                <div class="exp__job-role">{{ job.role }}</div>
+                <div class="exp__job-period">{{ job.from }} – {{ job.to }}</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="exp__detail">
+            <ng-container *ngFor="let job of jobs; let i = index">
+              <div class="exp__panel" *ngIf="active === i">
+                <div class="exp__panel-header">
+                  <div>
+                    <span class="exp__current-badge" *ngIf="job.current">Current role</span>
+                    <h3 class="exp__panel-title">{{ job.role }}</h3>
+                    <p class="exp__panel-company">{{ job.company }} · {{ job.location }}</p>
+                  </div>
+                  <div class="exp__panel-period">{{ job.from }} – {{ job.to }}</div>
+                </div>
+                <ul class="exp__points">
+                  <li *ngFor="let pt of job.points">{{ pt }}</li>
+                </ul>
+                <div class="exp__tech">
+                  <span class="pill" *ngFor="let t of job.tech">{{ t }}</span>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+
+        </div>
+
+        <div class="exp__edu">
+          <div class="section-eyebrow" style="margin-bottom:28px">Education</div>
+          <div class="edu__grid">
+            <div class="edu-card" *ngFor="let e of education">
+              <div class="edu-card__degree">{{ e.degree }}</div>
+              <div class="edu-card__school">{{ e.school }}</div>
+              <div class="edu-card__year">{{ e.year }}</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
