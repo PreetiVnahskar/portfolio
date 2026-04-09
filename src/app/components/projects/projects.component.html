@@ -2,32 +2,234 @@
       <div class="container">
         <div class="section-eyebrow">Projects</div>
         <h2 class="section-heading">Things I've built</h2>
-        <p class="section-sub">Real-world applications built end-to-end across the full stack.</p>
+        <p class="section-sub">Real-world applications — from concept to deployment, across the full stack.</p>
 
-        <div class="proj__list">
-          <div class="proj-card" *ngFor="let p of projects; let i = index" [class.proj-card--featured]="p.featured">
-            <div class="proj-card__left">
-              <div class="proj-card__num">{{ ('0'+(i+1)).slice(-2) }}</div>
-              <div>
-                <div class="proj-card__badges">
-                  <span class="proj-badge proj-badge--featured" *ngIf="p.featured">Featured</span>
-                  <span class="proj-badge">{{ p.type }}</span>
+        <!-- Filter -->
+        <div class="proj__filters">
+          <button *ngFor="let f of filters"
+                  class="proj-filter"
+                  [class.active]="activeFilter() === f"
+                  (click)="activeFilter.set(f)">
+            {{ f }}
+          </button>
+        </div>
+
+        <div class="proj__grid">
+
+          <!-- ─── FEATURED: Asset Management ─── -->
+          <div class="proj-card proj-card--featured proj-card--wide"
+               *ngIf="show('Full Stack')">
+            <div class="proj-card__top">
+              <div class="proj-card__badges">
+                <span class="badge badge--featured">★ Featured</span>
+                <span class="badge badge--fullstack">Full Stack</span>
+                <span class="badge badge--wip">In Progress</span>
+              </div>
+              <div class="proj-card__links">
+                <a href="https://github.com/preetibanshkar/asset-management" target="_blank" class="proj-link" title="GitHub">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.79-.26.79-.58v-2.23c-3.34.73-4.03-1.42-4.03-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013.01-.4c1.02 0 2.05.14 3.01.4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.19.69.8.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                </a>
+              </div>
+            </div>
+
+            <h3 class="proj-card__title">Asset Management System</h3>
+            <p class="proj-card__desc">
+              A full-stack web application for managing organizational assets — laptops, devices,
+              and equipment. Built with a layered architecture: Angular frontend, ASP.NET Core Web API
+              backend, and SQL Server database.
+            </p>
+
+            <!-- Feature highlights in 2 columns -->
+            <div class="proj-card__features">
+              <div class="proj-feature-col">
+                <div class="proj-feature-head">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  User Portal
                 </div>
-                <h3 class="proj-card__title">{{ p.title }}</h3>
-                <p class="proj-card__desc">{{ p.description }}</p>
-                <ul class="proj-card__points">
-                  <li *ngFor="let pt of p.points">{{ pt }}</li>
+                <ul class="proj-feature-list">
+                  <li>Register &amp; Login with JWT auth</li>
+                  <li>Browse available assets</li>
+                  <li>Submit asset requests</li>
+                  <li>Track request status</li>
+                </ul>
+              </div>
+              <div class="proj-feature-col">
+                <div class="proj-feature-head">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                  Admin Panel
+                </div>
+                <ul class="proj-feature-list">
+                  <li>Add / Update / Delete assets</li>
+                  <li>Approve or reject requests</li>
+                  <li>Manage users</li>
+                  <li>View asset allocation</li>
                 </ul>
               </div>
             </div>
-            <div class="proj-card__right">
-              <div class="proj-card__stack-label">Tech stack</div>
-              <div class="proj-card__stack">
-                <span class="pill" *ngFor="let t of p.stack">{{ t }}</span>
+
+            <!-- Architecture diagram -->
+            <div class="proj-arch">
+              <div class="proj-arch__layer proj-arch__layer--fe">
+                <span class="proj-arch__label">Frontend</span>
+                <span class="proj-arch__tech">Angular · TypeScript · Reactive Forms</span>
+              </div>
+              <div class="proj-arch__arrow">
+                <svg viewBox="0 0 24 6" fill="none"><path d="M0 3h20M17 0l3 3-3 3" stroke="currentColor" stroke-width="1.5"/></svg>
+                REST API
+              </div>
+              <div class="proj-arch__layer proj-arch__layer--be">
+                <span class="proj-arch__label">Backend</span>
+                <span class="proj-arch__tech">ASP.NET Core · C# · JWT</span>
+              </div>
+              <div class="proj-arch__arrow">
+                <svg viewBox="0 0 24 6" fill="none"><path d="M0 3h20M17 0l3 3-3 3" stroke="currentColor" stroke-width="1.5"/></svg>
+                EF Core
+              </div>
+              <div class="proj-arch__layer proj-arch__layer--db">
+                <span class="proj-arch__label">Database</span>
+                <span class="proj-arch__tech">SQL Server · Users · Assets · Requests</span>
               </div>
             </div>
+
+            <div class="proj-card__stack">
+              <span class="proj-tech" *ngFor="let t of assetStack">{{ t }}</span>
+            </div>
           </div>
+
+          <!-- ─── Portfolio Project ─── -->
+          <div class="proj-card" *ngIf="show('Frontend')">
+            <div class="proj-card__top">
+              <div class="proj-card__badges">
+                <span class="badge badge--frontend">Frontend</span>
+                <span class="badge badge--live">Live</span>
+              </div>
+              <div class="proj-card__links">
+                <a href="https://github.com/preetibanshkar/portfolio" target="_blank" class="proj-link" title="GitHub">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.79-.26.79-.58v-2.23c-3.34.73-4.03-1.42-4.03-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.12-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 013.01-.4c1.02 0 2.05.14 3.01.4 2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.24 2.88.12 3.18.77.84 1.24 1.91 1.24 3.22 0 4.61-2.81 5.63-5.48 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.19.69.8.58C20.56 21.8 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                </a>
+                <a href="https://preetibanshkar.github.io/portfolio" target="_blank" class="proj-link" title="Live">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                </a>
+              </div>
+            </div>
+            <h3 class="proj-card__title">Developer Portfolio</h3>
+            <p class="proj-card__desc">This portfolio website — built entirely with Angular 17 standalone components. Features typewriter animation, rotating roles, floating tech icons, interactive skill filters, and a professional dark theme.</p>
+            <ul class="proj-card__points">
+              <li>Standalone Angular 17 components with inline styles</li>
+              <li>Typewriter name animation + rotating role titles</li>
+              <li>Interactive skills filter with category tabs</li>
+              <li>Deployed to GitHub Pages via angular-cli-ghpages</li>
+            </ul>
+            <div class="proj-card__stack">
+              <span class="proj-tech" *ngFor="let t of portfolioStack">{{ t }}</span>
+            </div>
+          </div>
+
+          <!-- ─── Quiz Overs ─── -->
+          <div class="proj-card" *ngIf="show('Full Stack')">
+            <div class="proj-card__top">
+              <div class="proj-card__badges">
+                <span class="badge badge--fullstack">Full Stack</span>
+                <span class="badge badge--completed">Completed</span>
+              </div>
+            </div>
+            <h3 class="proj-card__title">Quiz Overs — Mock Exam Platform</h3>
+            <p class="proj-card__desc">Online mock exam preparation platform where users take topic-based quizzes, track scores, and review answers — built end-to-end with Angular, ASP.NET Core, and SQL Server.</p>
+            <ul class="proj-card__points">
+              <li>RESTful CRUD APIs for quiz creation and user responses</li>
+              <li>EF Core + LINQ for efficient database operations</li>
+              <li>Aligned API contracts and authentication flows with frontend team</li>
+              <li>Cross-layer debugging for reliable user experience</li>
+            </ul>
+            <div class="proj-card__stack">
+              <span class="proj-tech" *ngFor="let t of quizStack">{{ t }}</span>
+            </div>
+          </div>
+
+          <!-- ─── Finovers ─── -->
+          <div class="proj-card" *ngIf="show('Full Stack')">
+            <div class="proj-card__top">
+              <div class="proj-card__badges">
+                <span class="badge badge--fullstack">Full Stack</span>
+                <span class="badge badge--completed">Completed</span>
+              </div>
+            </div>
+            <h3 class="proj-card__title">Finovers — Finance Management System</h3>
+            <p class="proj-card__desc">Finance management platform with transaction tracking and reporting dashboards, integrating Angular UI with REST APIs for real-time data rendering.</p>
+            <ul class="proj-card__points">
+              <li>Angular modules for transaction and reporting workflows</li>
+              <li>Robust form validation reducing user data errors significantly</li>
+              <li>API consistency and data integrity across all modules</li>
+            </ul>
+            <div class="proj-card__stack">
+              <span class="proj-tech" *ngFor="let t of finoStack">{{ t }}</span>
+            </div>
+          </div>
+
+          <!-- ─── Upcoming 1: Expense Tracker ─── -->
+          <!-- <div class="proj-card proj-card--upcoming" *ngIf="show('Upcoming')">
+            <div class="proj-card__top">
+              <div class="proj-card__badges">
+                <span class="badge badge--upcoming">Coming Soon</span>
+                <span class="badge badge--idea">3–4 Days Build</span>
+              </div>
+            </div>
+            <div class="proj-card__upcoming-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+            </div>
+            <h3 class="proj-card__title">Personal Expense Tracker</h3>
+            <p class="proj-card__desc">A clean Angular app to track daily income and expenses with category-wise charts, monthly summaries, and local data persistence using localStorage.</p>
+            <ul class="proj-card__points">
+              <li>Add / edit / delete income & expense entries</li>
+              <li>Chart.js doughnut chart for category breakdown</li>
+              <li>Monthly filter and balance summary</li>
+              <li>Deploy to GitHub Pages in 3–4 days</li>
+            </ul>
+            <div class="proj-card__stack">
+              <span class="proj-tech" *ngFor="let t of expenseStack">{{ t }}</span>
+            </div>
+          </div> -->
+
+          <!-- ─── Upcoming 2: Task Board ─── -->
+          <!-- <div class="proj-card proj-card--upcoming" *ngIf="show('Upcoming')">
+            <div class="proj-card__top">
+              <div class="proj-card__badges">
+                <span class="badge badge--upcoming">Coming Soon</span>
+                <span class="badge badge--idea">3–4 Days Build</span>
+              </div>
+            </div>
+            <div class="proj-card__upcoming-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+            </div>
+            <h3 class="proj-card__title">Kanban Task Board</h3>
+            <p class="proj-card__desc">A drag-and-drop Kanban board built with Angular CDK. Tasks move between To Do, In Progress, and Done columns with priority labels and due dates.</p>
+            <ul class="proj-card__points">
+              <li>Angular CDK drag-and-drop between columns</li>
+              <li>Add, edit, delete tasks with priority tags</li>
+              <li>Persists state in localStorage</li>
+              <li>Fully responsive — great for portfolio showcase</li>
+            </ul>
+            <div class="proj-card__stack">
+              <span class="proj-tech" *ngFor="let t of kanbanStack">{{ t }}</span>
+            </div>
+          </div> -->
+
         </div>
+
+        <!-- Suggested quick projects note -->
+        <!-- <div class="proj__suggestions">
+          <div class="proj__suggestions-head">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            Other quick Angular projects you can build in 3–4 days
+          </div>
+          <div class="proj__suggestions-grid">
+            <div class="proj__suggestion" *ngFor="let s of suggestions">
+              <span class="proj__suggestion-name">{{ s.name }}</span>
+              <span class="proj__suggestion-desc">{{ s.desc }}</span>
+              <span class="proj__suggestion-time">{{ s.time }}</span>
+            </div>
+          </div>
+        </div> -->
 
       </div>
     </section>
